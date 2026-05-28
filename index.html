@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Так называемый Ратерочек — Официальный сайт</title>
+    <style>
+        :root {
+            --bg-color: #0a0a0c;
+            --card-bg: #121216;
+            --accent-color: #7b2cbf;
+            --accent-glow: #9d4edd;
+            --text-main: #f8f9fa;
+            --text-muted: #94a3b8;
+            --border-color: #2a2a35;
+            --nft-gold: #ffb703;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #fff, var(--accent-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        .grid-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(157, 78, 221, 0.15);
+        }
+
+        .card.contest-card {
+            border-color: rgba(255, 183, 3, 0.2);
+        }
+        
+        .card.contest-card:hover {
+            border-color: var(--nft-gold);
+            box-shadow: 0 10px 30px rgba(255, 183, 3, 0.15);
+        }
+
+        .card.contest-card::before {
+            background: linear-gradient(90deg, transparent, var(--nft-gold), transparent);
+        }
+
+        .card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .card.contest-card h2 {
+            color: var(--nft-gold);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .card.contest-card .btn {
+            background: var(--nft-gold);
+            color: #000;
+        }
+
+        .card:hover .btn {
+            background: var(--accent-glow);
+        }
+
+        .card.contest-card:hover .btn {
+            background: #ffe169;
+        }
+
+        .social-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .social-section h2 {
+            margin-bottom: 30px;
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .social-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #1e1e24;
+            border: 1px solid var(--border-color);
+            padding: 12px 25px;
+            border-radius: 30px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--text-main);
+            color: var(--bg-color);
+            transform: scale(1.05);
+        }
+
+        .video-showcase {
+            margin-top: 80px;
+        }
+
+        .video-showcase h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .player-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 900px) {
+            .player-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .video-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        .video-card:hover {
+            transform: scale(1.02);
+            border-color: var(--accent-glow);
+        }
+
+        .iframe-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background: #000;
+        }
+
+        .iframe-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .video-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 10px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Так называемый Ратерочек</h1>
+            <p>Официальный хаб проекта. Все ресурсы, утилиты и гайды в одном месте.</p>
+        </header>
+
+        <div class="grid-nav">
+            <a href="https://t.me/taknazyvaemy/100" target="_blank" class="card">
+                <div>
+                    <h2>Информация</h2>
+                    <p>Все, что нужно знать о проекте. Манифест, правила, актуальный статус систем и базовая документация для новичков.</p>
+                </div>
+                <span class="btn">Читать</span>
+            </a>
+
+            <a href="https://t.me/taknazyvaemy/224" target="_blank" class="card">
+                <div>
+                    <h2>Магазин приложений</h2>
+                    <p>Каталог софта, приватных сборок и специализированных утилит под наши задачи. Проверенный чистый код.</p>
+                </div>
+                <span class="btn">В магазин</span>
+            </a>
+
+            <a href="https://t.me/taknazyvaemy/322" target="_blank" class="card contest-card" id="contestCard">
+                <div>
+                    <h2>Рассмеши Ратера</h2>
+                    <p>Убойный конкурс для комьюнити! Сможешь выдать шутку или мем, которые заставят Ратера улыбнуться? Главный приз — эксклюзивный NFT.</p>
+                </div>
+                <span class="btn">Залутать NFT</span>
+            </a>
+
+            <a href="https://t.me/taknazyvaemy" target="_blank" class="card">
+                <div>
+                    <h2>TCP Туннели</h2>
+                    <p>Покупка надежных, быстрых и защищенных TCP-тунлелей для проброса портов, обхода NAT и стабильного коннекта.</p>
+                </div>
+                <span class="btn">Купить туннель</span>
+            </a>
+        </div>
+
+        <section class="social-section">
+            <h2>Наши ресурсы</h2>
+            <div class="social-grid">
+                <a href="https://t.me/taknazyvaemy" target="_blank" class="social-link">
+                    <span>Telegram-канал</span>
+                </a>
+                <a href="https://teletype.in/@taknazyvaemy" target="_blank" class="social-link">
+                    <span>Teletype (Статьи)</span>
+                </a>
+                <a href="https://www.youtube.com/@taknazyvaemy" target="_blank" class="social-link">
+                    <span>YouTube Канал</span>
+                </a>
+                <a href="https://www.tiktok.com/@taknazyvaemy" target="_blank" class="social-link">
+                    <span>TikTok</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="video-showcase">
+            <h2>Актуальные видеоинструкции</h2>
+            
+            <div class="player-container">
+                <div class="video-card">
+                    <div class="iframe-wrapper">
+                        <iframe src="https://www.youtube.com/embed/NnrD-oW_nMk?rel=0&modestbranding=1" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                referrerpolicy="no-referrer-when-downgrade"
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Лучший аналог PORTMAP</h3>
+                        <p>Разбор топовой альтернативы Portmap. Пошаговое руководство, как настроить сквозной туннель без ограничений и лишнего геморроя.</p>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="iframe-wrapper">
+                        <iframe src="https://www.youtube.com/embed/eBtV0wByjNo?rel=0&modestbranding=1" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Как быстро настроить порты</h3>
+                        <p>Пошаговое руководство по быстрой конфигурации и открытию портов для обеспечения стабильного сетевого соединения.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Так называемый Ратерочек. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const contestCard = document.getElementById('contestCard');
+            if(contestCard) {
+                contestCard.addEventListener('mouseenter', () => {
+                    contestCard.style.transform = 'translateY(-12px) scale(1.02)';
+                });
+                contestCard.addEventListener('mouseleave', () => {
+                    contestCard.style.transform = 'translateY(0) scale(1)';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
