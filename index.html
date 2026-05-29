@@ -14,6 +14,8 @@
             --text-muted: #94a3b8;
             --border-color: #2a2a35;
             --nft-gold: #ffb703;
+            --alert-red: #ef4444;
+            --alert-blue: #0088cc;
         }
 
         * {
@@ -38,7 +40,7 @@
 
         header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             position: relative;
         }
 
@@ -51,12 +53,31 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
-            animation: fadeIn 1.2s ease-out;
         }
 
         header p {
             color: var(--text-muted);
             font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .tg-alert-btn {
+            display: inline-block;
+            background: rgba(0, 136, 204, 0.1);
+            border: 1px solid var(--alert-blue);
+            color: var(--alert-blue);
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .tg-alert-btn:hover {
+            background: var(--alert-blue);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(0, 136, 204, 0.4);
         }
 
         .grid-nav {
@@ -158,6 +179,59 @@
             background: #ffe169;
         }
 
+        .team-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px 20px;
+            margin-bottom: 60px;
+        }
+
+        .team-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 35px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .team-member {
+            background: #18181f;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+
+        .team-member:hover {
+            border-color: var(--accent-color);
+        }
+
+        .team-member h3 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .team-member .role {
+            color: var(--accent-glow);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .team-member .desc {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+
         .social-section {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -170,7 +244,6 @@
         .social-section h2 {
             margin-bottom: 30px;
             font-size: 2rem;
-            letter-spacing: 1px;
         }
 
         .social-grid {
@@ -181,12 +254,9 @@
         }
 
         .social-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            padding: 12px 25px;
             background: #1e1e24;
             border: 1px solid var(--border-color);
-            padding: 12px 25px;
             border-radius: 30px;
             color: var(--text-main);
             text-decoration: none;
@@ -201,7 +271,7 @@
         }
 
         .video-showcase {
-            margin-top: 80px;
+            margin-top: 60px;
         }
 
         .video-showcase h2 {
@@ -214,6 +284,7 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 30px;
+            margin-bottom: 20px;
         }
 
         @media (min-width: 900px) {
@@ -229,6 +300,8 @@
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
             transition: transform 0.4s ease, border-color 0.4s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .video-card:hover {
@@ -254,31 +327,51 @@
 
         .video-info {
             padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .video-info h3 {
+        .video-text h3 {
             font-size: 1.2rem;
             margin-bottom: 8px;
             color: #fff;
         }
 
-        .video-info p {
+        .video-text p {
             color: var(--text-muted);
             font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .yt-fix-btn {
+            display: block;
+            text-align: center;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--alert-red);
+            color: var(--alert-red);
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .yt-fix-btn:hover {
+            background: var(--alert-red);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
         }
 
         footer {
             text-align: center;
-            margin-top: 10px;
-            padding-top: 40px;
+            margin-top: 40px;
+            padding-top: 30px;
             border-top: 1px solid var(--border-color);
             color: var(--text-muted);
             font-size: 0.9rem;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -288,18 +381,19 @@
         <header>
             <h1>Так называемый Ратерочек</h1>
             <p>Официальный хаб проекта. Все ресурсы, утилиты и гайды в одном месте.</p>
+            <a href="https://github.com/Srevinsaju/tg-ws-proxy" target="_blank" class="tg-alert-btn">Не работает ТГ? (tg-ws-proxy)</a>
         </header>
 
         <div class="grid-nav">
-            <a href="https://t.me/taknazyvaemy/100" target="_blank" class="card">
+            <a href="https://t.me/taknazyvaemy/368" target="_blank" class="card">
                 <div>
                     <h2>Информация</h2>
-                    <p>Все, что нужно знать о проекте. Манифест, правила, актуальный статус систем и базовая документация для новичков.</p>
+                    <p>Все, что нужно знать о проекте. Манифест, правила, статус систем и базовая документация для новичков.</p>
                 </div>
                 <span class="btn">Читать</span>
             </a>
 
-            <a href="https://t.me/taknazyvaemy/224" target="_blank" class="card">
+            <a href="https://t.me/taknazyvaemy/100" target="_blank" class="card">
                 <div>
                     <h2>Магазин приложений</h2>
                     <p>Каталог софта, приватных сборок и специализированных утилит под наши задачи. Проверенный чистый код.</p>
@@ -307,7 +401,7 @@
                 <span class="btn">В магазин</span>
             </a>
 
-            <a href="https://t.me/taknazyvaemy/322" target="_blank" class="card contest-card" id="contestCard">
+            <a href="https://t.me/taknazyvaemy/224" target="_blank" class="card contest-card" id="contestCard">
                 <div>
                     <h2>Рассмеши Ратера</h2>
                     <p>Убойный конкурс для комьюнити! Сможешь выдать шутку или мем, которые заставят Ратера улыбнуться? Главный приз — эксклюзивный NFT.</p>
@@ -315,30 +409,48 @@
                 <span class="btn">Залутать NFT</span>
             </a>
 
-            <a href="https://t.me/taknazyvaemy" target="_blank" class="card">
+            <a href="https://t.me/taknazyvaemy/322" target="_blank" class="card">
                 <div>
                     <h2>TCP Туннели</h2>
-                    <p>Покупка надежных, быстрых и защищенных TCP-тунлелей для проброса портов, обхода NAT и стабильного коннекта.</p>
+                    <p>Покупка надежных, быстрых и защищенных TCP-тунлелей для проброса портов, обхода NAT и стабильного коннекта через нашего бота.</p>
                 </div>
                 <span class="btn">Купить туннель</span>
             </a>
         </div>
 
+        <section class="team-section">
+            <h2>Команда Ратерочка</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <h3>Саша Докс</h3>
+                    <div class="role">Человек-Бренд</div>
+                    <div class="desc">Лицо проекта, идейный вдохновитель, маркетинг.</div>
+                </div>
+                <div class="team-member">
+                    <h3>rv0x3l</h3>
+                    <div class="role">Main Developer</div>
+                    <div class="desc">Разработчик этого сайта, софта и всей основной архитектуры.</div>
+                </div>
+                <div class="team-member">
+                    <h3>Кофа</h3>
+                    <div class="role">Bot Dev & Admin</div>
+                    <div class="desc">Разработчик бота TCP-туннелей, админ ресурсов.</div>
+                </div>
+                <div class="team-member">
+                    <h3>Кирилл</h3>
+                    <div class="role">Монтаж</div>
+                    <div class="desc">Человек, который делает контент сочным и смотрибельным.</div>
+                </div>
+            </div>
+        </section>
+
         <section class="social-section">
             <h2>Наши ресурсы</h2>
             <div class="social-grid">
-                <a href="https://t.me/taknazyvaemy" target="_blank" class="social-link">
-                    <span>Telegram-канал</span>
-                </a>
-                <a href="https://teletype.in/@taknazyvaemy" target="_blank" class="social-link">
-                    <span>Teletype (Статьи)</span>
-                </a>
-                <a href="https://www.youtube.com/@taknazyvaemy" target="_blank" class="social-link">
-                    <span>YouTube Канал</span>
-                </a>
-                <a href="https://www.tiktok.com/@taknazyvaemy" target="_blank" class="social-link">
-                    <span>TikTok</span>
-                </a>
+                <a href="https://t.me/taknazyvaemy" target="_blank" class="social-link">Telegram-канал</a>
+                <a href="https://teletype.in/@taknazyvaemy" target="_blank" class="social-link">Teletype (Статьи)</a>
+                <a href="https://www.youtube.com/@taknazyvaemy" target="_blank" class="social-link">YouTube Канал</a>
+                <a href="https://www.tiktok.com/@taknazyvaemy" target="_blank" class="social-link">TikTok</a>
             </div>
         </section>
 
@@ -355,8 +467,11 @@
                         </iframe>
                     </div>
                     <div class="video-info">
-                        <h3>Лучший аналог PORTMAP</h3>
-                        <p>Разбор топовой альтернативы Portmap. Пошаговое руководство, как настроить сквозной туннель без ограничений и лишнего геморроя.</p>
+                        <div class="video-text">
+                            <h3>Лучший аналог PORTMAP</h3>
+                            <p>Разбор топовой альтернативы Portmap. Пошаговое руководство, как настроить сквозной туннель наружу.</p>
+                        </div>
+                        <a href="https://github.com/Flowseal/zapret-discord-youtube" target="_blank" class="yt-fix-btn">Не работает YouTube? (ZAPRET)</a>
                     </div>
                 </div>
 
@@ -364,12 +479,16 @@
                     <div class="iframe-wrapper">
                         <iframe src="https://www.youtube.com/embed/eBtV0wByjNo?rel=0&modestbranding=1" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                referrerpolicy="no-referrer-when-downgrade"
                                 allowfullscreen>
                         </iframe>
                     </div>
                     <div class="video-info">
-                        <h3>Как быстро настроить порты</h3>
-                        <p>Пошаговое руководство по быстрой конфигурации и открытию портов для обеспечения стабильного сетевого соединения.</p>
+                        <div class="video-text">
+                            <h3>Как быстро настроить порты</h3>
+                            <p>Пошаговое руководство по быстрой конфигурации и открытию портов для стабильного коннекта.</p>
+                        </div>
+                        <a href="https://github.com/Flowseal/zapret-discord-youtube" target="_blank" class="yt-fix-btn">Не работает YouTube? (ZAPRET)</a>
                     </div>
                 </div>
             </div>
@@ -395,4 +514,3 @@
     </script>
 </body>
 </html>
-
